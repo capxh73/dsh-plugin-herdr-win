@@ -4,14 +4,18 @@
   "description": "Observe and drive Herdr from DeepSeek Harness: herdr tools, a session preset, and a Web panel.",
   "license": "MIT",
   "author": "NAMEWTA",
+  "contributors": [
+    "sunny0826",
+    "capxh73 (native Windows adaptation)"
+  ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/NAMEWTA/dsh-plugin-herdr.git"
+    "url": "git+https://github.com/capxh73/dsh-plugin-herdr-win.git"
   },
   "bugs": {
-    "url": "https://github.com/NAMEWTA/dsh-plugin-herdr/issues"
+    "url": "https://github.com/capxh73/dsh-plugin-herdr-win/issues"
   },
-  "homepage": "https://github.com/NAMEWTA/dsh-plugin-herdr#readme",
+  "homepage": "https://github.com/capxh73/dsh-plugin-herdr-win#readme",
   "type": "module",
   "icon": "./icon.svg",
   "main": "lib/index.js",
@@ -85,34 +89,9 @@
     "zod": "^4.4.3"
   },
   "devDependencies": {
-    "@deepseek-ai/cordis": "4.0.5-alpha.1",
-    "@deepseek-ai/dsh-agent": "0.2.1-alpha.2",
-    "@deepseek-ai/dsh-host-webserver": "0.2.1-alpha.2",
-    "@deepseek-ai/dsh-jobs": "0.2.1-alpha.2",
-    "@deepseek-ai/dsh-skill": "0.2.1-alpha.2",
-    "@deepseek-ai/dsh-tools": "0.2.1-alpha.2",
-    "@deepseek-ai/dsh-typert-protocol": "0.2.1-alpha.2",
-    "@deepseek-ai/dsh-typert-registry": "0.2.1-alpha.2",
-    "@deepseek-ai/schemastery": "3.18.5-alpha.1",
-    "@types/node": "^24.0.0",
-    "@types/react": "^19.2.18",
-    "@types/react-dom": "^19.3.0",
-    "react": "19.2.8",
-    "react-dom": "19.2.8",
-    "tsdown": "^0.22.14",
-    "typescript": "^5.9.0"
+    "@types/node": "^24.0.0"
   },
   "scripts": {
-    "build": "tsdown && node scripts/gen-typert.mjs && tsdown --config tsdown.web.config.ts",
-    "gen:types": "node scripts/gen-types.mjs",
-    "gen:types:check": "node scripts/gen-types.mjs --check",
-    "gen:typert": "node scripts/gen-typert.mjs",
-    "test": "pnpm build && pnpm test:unit",
-    "test:unit": "node --experimental-transform-types --test \"test/unit/*.test.ts\"",
-    "test:integration": "pnpm build && node test/integration/run.mjs && node test/integration/extended.mjs && node test/integration/events.mjs && node test/integration/close-rename.mjs && node test/integration/terminal-session.mjs",
-    "typecheck": "tsc --noEmit",
-    "quality": "pnpm build && pnpm typecheck && pnpm gen:types:check && pnpm test:unit && pnpm test:package",
-    "check:package": "node scripts/check-package.mjs",
-    "test:package": "node --test test/packaging/*.test.mjs"
+    "check": "node --check lib/index.js && node --check lib/client.js && node --check lib/session-mode.js && node --check lib/typert.host.js && node --check lib/environment-contract.js && node --check lib/binding-registry-CamHbZhK.js"
   }
 }

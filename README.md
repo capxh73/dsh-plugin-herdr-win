@@ -141,13 +141,14 @@ the current plugin does not install a preset directory there.
 
 ## Development
 
-`pnpm quality` runs build, typecheck, protocol drift checks, unit and packaging
-regression tests. `pnpm test:integration` needs a live Herdr server and may skip
-locally when unavailable; CI requires it to run. Actual DSH Web installation and
-browser smoke are separate CI matrix checks.
+This fork ships **built artifacts only** (`lib/` is the compiled output); the upstream
+build pipeline (`src/`, `scripts/`, `test/`, `tsdown`/`tsc` configs) is not vendored.
+`pnpm run check` is the runnable smoke test here — it syntax-checks every shipped
+module. To build from source, use the upstream repository
+[NAMEWTA/dsh-plugin-herdr](https://github.com/NAMEWTA/dsh-plugin-herdr).
 
-The unresolved broad hardening work is tracked in draft PR #13; this bounded
-compatibility release does not claim to complete it.
+The Windows adaptation is documented in [COMPATIBILITY.md](COMPATIBILITY.md) and was
+verified against Herdr 0.9.3 / protocol 22 on real Windows and WSL-adjacent setups.
 
 ## License
 

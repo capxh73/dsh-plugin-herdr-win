@@ -126,11 +126,13 @@ dsh plugin --profile web remove @namewta/dsh-plugin-herdr
 
 ## 开发与验证
 
-`pnpm quality` 执行构建、类型检查、协议生成漂移检查、单元测试和打包回归测试。
-`pnpm test:integration` 需要真实 Herdr 服务；本地环境缺失时可以跳过，CI 则要求实际执行。
-真实 DSH 安装与浏览器冒烟测试由独立的 CI 版本矩阵执行。
+本 fork **只发布构建产物**（`lib/` 是编译结果）；上游的构建链（`src/`、`scripts/`、
+`test/`、`tsdown`/`tsc` 配置）未随仓库提供。仓库内可直接运行的冒烟检查是
+`pnpm run check`（对全部发布模块做语法检查）。需要从源码构建时请使用上游仓库
+[NAMEWTA/dsh-plugin-herdr](https://github.com/NAMEWTA/dsh-plugin-herdr)。
 
-全面加固工作仍在草稿 PR #13 中，本次兼容性发布不宣称已经完成全部加固。
+Windows 适配细节见 [COMPATIBILITY.md](COMPATIBILITY.md)，已在真实 Windows 环境针对
+Herdr 0.9.3 / protocol 22 验证。
 
 ## 许可证
 
